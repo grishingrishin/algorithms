@@ -23,7 +23,7 @@ class LinkedListNode {
 /**
  * @returns {object} Returns linked list
  */
-class LinkedList {
+class CircularlyLinkedList {
   constructor() {
     this.h = null;
     this.t = null;
@@ -36,7 +36,7 @@ class LinkedList {
    * @returns {object} Returns linked list node 
    */
   append(v) {
-    const n = new LinkedListNode(v);
+    const n = new LinkedListNode(v, this.h);
 
     if (!this.h) {
       this.h = n;
@@ -68,11 +68,11 @@ class LinkedList {
     return this;
   }
 
-   /**
+  /**
    * Remove first node
    * @returns {object} Returns new linked list 
    */
-  removeBeginning() {
+  revomeBeginning() {
     if (!this.h)
       return null;
 
@@ -99,12 +99,16 @@ class LinkedList {
       this.h = n;
       this.t = n;
 
+      this.t.n = this.h;
+
       return this;
     }
 
-    if (!o.n) {
+    if (o.n === h) {
       this.t.n = n;
       this.t = n;
+
+      this.t.n = h;
 
       return this;
     }
@@ -128,8 +132,10 @@ class LinkedList {
 
     n.n = n.n.n;
 
-    if (n.n === null)
+    if (n.n === h) {
       this.t = n;
+      this.t.n = h;
+    }
 
     return this;
   }
@@ -139,7 +145,9 @@ class LinkedList {
    * @returns {any} Returns found value 
    */
   getValue(t) {
-    let { h } = this;
+    const f = this.h;
+
+    let h = f;
 
     if (!h)
       return null;
@@ -147,7 +155,7 @@ class LinkedList {
     if (h.v === t)
       return h.v;
 
-    while(h.n !== null) {
+    while(h.n !== h) {
       if (h.n.v === t)
         return h.n.v;
 
@@ -162,7 +170,9 @@ class LinkedList {
    * @returns {object} Returns linked list node 
    */
   getNode(t) {
-    let { h } = this;
+    const f = this.h;
+
+    let h = f;
 
     if (!h)
       return null;
@@ -170,7 +180,7 @@ class LinkedList {
     if (h.v === t)
       return h;
 
-    while(h.n !== null) {
+    while(h.n !== h) {
       if (h.n.v === t)
         return h.n;
 
@@ -181,4 +191,4 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
+const list = new CircularlyLinkedList();
