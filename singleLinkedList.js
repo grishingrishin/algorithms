@@ -21,9 +21,13 @@ class LinkedListNode {
 }
 
 /**
+ * Singly linked lists contain nodes which have a data field
+ * as well as 'next' field,which points to the next node in line of nodes.
+ * Operations that can be performed on singly linked lists
+ * include insertion, deletion and traversal. 
  * @returns {object} Returns linked list
  */
-class LinkedList {
+class SingleLinkedList {
   constructor() {
     this.h = null;
     this.t = null;
@@ -186,4 +190,4 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
+const list = new SingleLinkedList();
