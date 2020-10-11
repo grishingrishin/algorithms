@@ -38,7 +38,9 @@ class LinkedList {
   append(v) {
     const n = new LinkedListNode(v);
 
-    if (!this.h) {
+    const { h, t } = this;
+
+    if (!h) {
       this.h = n;
       this.t = n;
 
@@ -46,6 +48,7 @@ class LinkedList {
     }
 
     this.t.n = n;
+    n.p = t;
     this.t = n;
 
     return this;
@@ -60,6 +63,7 @@ class LinkedList {
   prepend(v) {
     const n = new LinkedListNode(v, this.h);
 
+    n.n.p = n;
     this.h = n;
 
     if (!this.t)
@@ -80,6 +84,7 @@ class LinkedList {
 
     if (this.h.n) {
       this.h = this.h.n;
+      this.h.p = null;
     } else {
       this.h = null;
       this.t = null;
@@ -95,7 +100,7 @@ class LinkedList {
    * @returns {object} Returns new linked list 
    */
   insertAfter(o, n) {
-    const { h } = this;
+    const { h, t } = this;
 
     if (!h) {
       this.h = n;
@@ -106,6 +111,7 @@ class LinkedList {
 
     if (!o.n) {
       this.t.n = n;
+      n.p = t;
       this.t = n;
 
       return this;
@@ -113,6 +119,9 @@ class LinkedList {
 
     n.n = o.n;
     o.n = n;
+
+    n.n.p = n;
+    n.p = o;
 
     return this;
   }
@@ -133,8 +142,8 @@ class LinkedList {
 
     n.n = n.n.n;
 
-    if (n.n === null)
-      this.t = n;
+    if (n.n)
+      n.n.p = n;
 
     return this;
   }

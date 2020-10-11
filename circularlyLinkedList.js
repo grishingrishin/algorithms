@@ -72,12 +72,15 @@ class CircularlyLinkedList {
    * Remove first node
    * @returns {object} Returns new linked list 
    */
-  revomeBeginning() {
-    if (!this.h)
-      return null;
+  removeBeginning() {
+    const { h } = this;
+
+    if (!h)
+      throw new Error('Current head is null');
 
     if (this.h.n) {
       this.h = this.h.n;
+      this.t.n = this.h;
     } else {
       this.h = null;
       this.t = null;
@@ -127,8 +130,11 @@ class CircularlyLinkedList {
   removeAfter(n) {
     const { h } = this;
 
-    if (!h || !n.n)
-      return null;
+    if (!h)
+      throw new Error('Current head is null');
+
+    if (!n.n)
+      throw new Error('Property next of new node is null');
 
     n.n = n.n.n;
 
@@ -150,7 +156,7 @@ class CircularlyLinkedList {
     let h = f;
 
     if (!h)
-      return null;
+      throw new Error('Current head is null');
 
     if (h.v === t)
       return h.v;
@@ -175,7 +181,7 @@ class CircularlyLinkedList {
     let h = f;
 
     if (!h)
-      return null;
+      throw new Error('Current head is null');
 
     if (h.v === t)
       return h;
