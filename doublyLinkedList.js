@@ -21,9 +21,13 @@ class LinkedListNode {
 }
 
 /**
+ * In a 'doubly linked list', each node contains, besides the next-node link,
+ * a second link field pointing to the 'previous' node in the sequence.
+ * The two links may be called 'forward('s') and 'backwards',
+ * or 'next' and 'prev'('previous'). 
  * @returns {object} Returns linked list
  */
-class LinkedList {
+class DoublyLinkedList {
   constructor() {
     this.h = null;
     this.t = null;
@@ -195,4 +199,4 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
+const list = new DoublyLinkedList();

@@ -21,6 +21,8 @@ class LinkedListNode {
 }
 
 /**
+ * In the last node of a list, the link field often contains a null reference.
+ * It is a list where the last pointer points to the first node. 
  * @returns {object} Returns linked list
  */
 class CircularlyLinkedList {
