@@ -77,7 +77,7 @@ class LinkedList {
  * LIFO (last in, first out).
  */
 class Stack {
-    constructor(m = 250) {
+    constructor(m = 256) {
         this.m = m;
         this.t = 0;
         this.i = new LinkedList();
