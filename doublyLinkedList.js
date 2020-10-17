@@ -86,8 +86,8 @@ class DoublyLinkedList {
     if (!h)
       throw new Error('Current head is null');
 
-    if (this.h.n) {
-      this.h = this.h.n;
+    if (h.n) {
+      this.h = h.n;
       this.h.p = null;
     } else {
       this.h = null;

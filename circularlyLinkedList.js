@@ -80,8 +80,8 @@ class CircularlyLinkedList {
     if (!h)
       throw new Error('Current head is null');
 
-    if (this.h.n) {
-      this.h = this.h.n;
+    if (h.n) {
+      this.h = h.n;
       this.t.n = this.h;
     } else {
       this.h = null;

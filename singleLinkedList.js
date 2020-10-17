@@ -82,8 +82,8 @@ class SingleLinkedList {
     if (!h)
       throw new Error('Current head is null');
 
-    if (this.h.n) {
-      this.h = this.h.n;
+    if (h.n) {
+      this.h = h.n;
     } else {
       this.h = null;
       this.t = null;
@@ -145,7 +145,7 @@ class SingleLinkedList {
 
   /**
    * @param {any} t - Target value
-   * @returns {any} Returns found value 
+   * @returns {any} Returns found value
    */
   getValue(t) {
     let { h } = this;
@@ -168,7 +168,7 @@ class SingleLinkedList {
 
   /**
    * @param {any} v - Any value
-   * @returns {object} Returns linked list node 
+   * @returns {object} Returns linked list node
    */
   getNode(t) {
     let { h } = this;
