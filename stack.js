@@ -39,6 +39,9 @@ class LinkedList {
    * @returns {object} Returns linked list node 
    */
     prepend(v) {
+        if (!v)
+            throw new Error('Current value is undefined');
+
         const n = new LinkedListNode(v, this.h);
 
         this.h = n;
@@ -78,9 +81,9 @@ class LinkedList {
  */
 class Stack {
     constructor(m = 256) {
+        this.s = new LinkedList();
         this.m = m;
-        this.t = 0;
-        this.i = new LinkedList();
+        this.l = 0;
     }
 
     /**
@@ -89,15 +92,12 @@ class Stack {
      * @returns {object} Returns new stack
      */
     pop() {
-        if (!this.t) // 0 == false
+        if (!this.l) // 0 == false
             throw new Error('Current stack is empty');
 
-        const n = this.i.remove();
+        this.l--;
 
-        this.i = n;
-        this.t -= 1;
-
-        return this;
+        return this.s.remove();
     }
 
     /**
@@ -106,18 +106,12 @@ class Stack {
      * @returns {object} Returns new stack
      */
     push(v) {
-        if (!v)
-            throw new Error('Current value is undefined');
-
-        if (this.m == this.t)
+        if (this.m == this.l)
             throw new Error('Current stuck is full');
 
-        const n = this.i.prepend(v);
+        this.l++;
 
-        this.i = n;
-        this.t += 1;
-
-        return this;
+        return this.s.prepend(v);
     }
 }
 
