@@ -40,6 +40,9 @@ class SingleLinkedList {
    * @returns {object} Returns linked list node 
    */
   append(v) {
+    if (!v)
+      throw new Error('Current value is undefined');
+
     const n = new LinkedListNode(v);
 
     if (!this.h) {
@@ -62,6 +65,9 @@ class SingleLinkedList {
    * @returns {object} Returns linked list node 
    */
   prepend(v) {
+    if (!v)
+      throw new Error('Current value is undefined');
+
     const n = new LinkedListNode(v, this.h);
 
     this.h = n;
@@ -148,6 +154,9 @@ class SingleLinkedList {
    * @returns {any} Returns found value
    */
   getValue(t) {
+    if (!t)
+      throw new Error('Current target value is undefined');
+
     let { h } = this;
 
     if (!h)
@@ -171,6 +180,9 @@ class SingleLinkedList {
    * @returns {object} Returns linked list node
    */
   getNode(t) {
+    if (!t)
+      throw new Error('Current target value is undefined');
+
     let { h } = this;
 
     if (!h)
